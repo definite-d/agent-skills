@@ -1,6 +1,6 @@
 ---
 name: granular-git
-description: "Use this skill whenever an agent needs to commit a precise, character-level subset of file changes to a Git repository without disturbing the working directory. Triggers include: staging only part of a file's edits, committing one logical change while leaving other in-progress work untouched on disk, or when patch-based approaches (git apply, git add -p) are failing due to surrounding context drift. Uses Git plumbing commands (hash-object, update-index) to bypass the working directory entirely."
+description: "Use this skill whenever an agent needs to commit a precise, character-level subset of file changes to a Git repository without disturbing the working directory. Triggers include: staging only part of a file's edits, committing one logical change while leaving other in-progress work untouched on disk, or when patch-based approaches (git apply, git add -p) are failing due to surrounding context drift. Uses Git plumbing commands (hash-object, update-index) to bypass the working directory entirely. Handles tracked files, untracked files that exist on disk, and brand-new files created purely from memory."
 ---
 
 # Skill: `granular-git`
@@ -99,6 +99,32 @@ git commit -m "Your precise commit message"
 
 The working directory file is unchanged. The developer's in-progress work is untouched.
 
+---
+---
+
+### Step 5: Multi-Commit Semantic Grouping (Optional)
+
+When a file contains **multiple independent logical changes**, repeat Steps 1-4 for each distinct change, building progressively:
+
+**Pattern:**
+```
+HEAD → Commit 1 (Change A) → Commit 2 (Change A+B) → Commit 3 (Change A+B+C)
+```
+
+**Procedure:**
+1. Identify the distinct semantic changes (e.g., bug fix, refactor, docs update)
+2. For each change, construct the **cumulative target state** including all prior changes
+3. Execute Steps 2-4 (hash-object → update-index → commit) for each cumulative state
+4. Each commit should have a focused message describing that specific change
+
+**Example:**
+| Commit | Target Content | Message |
+|--------|----------------|---------|
+| 1 | Original + Bug fix only | `fix: correct null pointer check` |
+| 2 | Commit 1 + Refactor | `refactor: extract validation logic` |
+| 3 | Commit 2 + Docs | `docs: add usage examples` |
+
+This produces a clean, reviewable history where each commit represents one logical unit of work, even when all changes coexist in a single file on disk.
 ---
 
 ## Full Reference Pipeline
