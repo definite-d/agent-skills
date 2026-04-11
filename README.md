@@ -11,6 +11,7 @@ npx skills add definite-d/agent-skills
 | Skill                                    | Description                                                                                                                         |
 | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | [`granular-git`](./skills/granular-git/) | Character-precise, non-destructive Git commits via Git's plumbing layer. Bypasses the working directory to stage exact file states. |
+| [`state-machine-design`](./skills/state-machine-design/) | Design software systems using the state machine pattern. Models application logic, UI flows, async operations, and workflows as explicit, testable state machines. |
 
 ## Structure
 
