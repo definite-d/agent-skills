@@ -18,3 +18,28 @@ Use this skill when you're designing systems that have:
 - Media players (idle → buffering → playing → paused)
 - Shopping carts (browsing → checkout → payment → confirmation)
 - Connection management (disconnected → connecting → connected → reconnecting)
+
+## Why State Machines?
+
+State machines make implicit state explicit. Instead of scattered boolean flags (`isLoading`, `hasError`, `isAuthenticated`), you define clear states with defined transitions.
+
+### Benefits
+
+| Traditional Approach | State Machine Approach |
+|---------------------|----------------------|
+| Hidden state in variables | Explicit states everyone can see |
+| Bug-prone conditional chains | Provably complete transition tables |
+| Hard to test all paths | Each state tested independently |
+| Documentation drifts from code | Self-documenting statecharts |
+| Race conditions and edge cases | All transitions explicitly defined |
+
+## What You'll Get
+
+This skill guides you through a systematic 4-phase design process:
+
+1. **Requirements Capture** — Identify actors, events, invariants, and error scenarios
+2. **State Enumeration** — List all distinct behavioral conditions your system can be in
+3. **Transition Mapping** — Define exactly how events move the system between states
+4. **Context & Persistence** — Determine what data the machine tracks and where it lives
+
+The skill includes implementation guides for XState v5, Redux, Python, and backend patterns with persistence, real-time sync, and distributed state coordination.
