@@ -43,3 +43,25 @@ This skill guides you through a systematic 4-phase design process:
 4. **Context & Persistence** — Determine what data the machine tracks and where it lives
 
 The skill includes implementation guides for XState v5, Redux, Python, and backend patterns with persistence, real-time sync, and distributed state coordination.
+
+## Quick Example
+
+Here's a form submission state machine:
+
+```typescript
+// States: idle, loading, success, failure
+// Events: SUBMIT, SUCCESS, ERROR, RETRY
+
+idle → SUBMIT [valid] → loading → SUCCESS → success
+idle → SUBMIT [invalid] → idle (show errors)
+loading → ERROR → failure → RETRY [retries < 3] → loading
+loading → TIMEOUT → failure
+```
+
+The skill helps you design this with proper timeout handling, idempotency guards, and retry logic.
+
+## Structure
+
+- `SKILL.md` — Complete design methodology and implementation references
+- `references/theory.md` — State machine theory and formal definitions
+- `references/implementation/` — Language-specific guides (XState, Redux, Python, etc.)
