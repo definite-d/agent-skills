@@ -37,4 +37,4 @@ skills/
 1. Create a subdirectory named after the skill (use kebab-case).
 2. Add `SKILL.md` with proper YAML frontmatter (`name` and `description`).
 3. Add `README.md` with context and examples.
-4. Update the table above in this file.
+4. Update the table above in this file in alphabetical order.
