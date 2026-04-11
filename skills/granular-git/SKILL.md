@@ -56,18 +56,11 @@ Apply character-level edits to **that string** (not the disk file). This ensures
 Use `git hash-object` to write the target string into Git's object database. This produces a Blob ID (SHA hash).
 
 ```bash
-TARGET_SHA=$(echo "The fast brown fox jumps." | git hash-object -w --stdin)
+TARGET_SHA=$(printf '%s' "$TARGET_CONTENT" | git hash-object -w --stdin)
 ```
 
 - `-w` writes the object to `.git/objects` and returns its SHA-1 hash.
-- For multi-line or binary-safe content, pipe from a temp file instead of `echo`.
-
-```bash
-# Preferred for multi-line content
-printf '%s' "$TARGET_CONTENT" > /tmp/target_state.txt
-TARGET_SHA=$(git hash-object -w /tmp/target_state.txt)
-rm /tmp/target_state.txt
-```
+- `printf '%s'` is used for binary safety and exact preservation of newlines.
 
 ---
 
