@@ -18,9 +18,9 @@ Standard Git tooling (`git add`, `git add -p`, `git apply`) is built for human w
 
 ## Contents
 
-| File       | Description                                                                            |
-| ---------- | -------------------------------------------------------------------------------------- |
-| `SKILL.md` | Full step-by-step procedure, command reference, safety checklist, and agent pseudocode |
+| File       | Description                                       |
+| ---------- | ------------------------------------------------- |
+| `SKILL.md` | Step-by-step procedure, safety checklist, examples |
 
 ## Quick Reference
 
