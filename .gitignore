@@ -1,0 +1,49 @@
+# OS metadata
+.DS_Store
+.DS_Store?
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+
+# Editor / IDE
+.idea/
+*.iml
+.vscode/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*.swo
+*~
+.~*
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Temp / backup
+*.tmp
+*.temp
+*.bak
+*.orig
+
+# Agent tooling / install artifacts
+.agents/
+.windsurf/
+.opencode/
+.cursor/
+.codex/
+skills-lock.json
+
+# Archives
+*.zip
+*.tar.gz
+*.tgz
