@@ -2,18 +2,31 @@
 
 My personal collection of specialized skills for AI agents, organized as discrete, reusable capabilities.
 
+## Install
+
+**Install all skills** to all configured agents:
+
 ```bash
-# Install every skill to all configured agents
 npx skills add definite-d/agent-skills -s '*' -a '*' -y
+```
 
-# Install a single skill to all agents
+**Install a specific skill** to all configured agents:
+
+```bash
 npx skills add definite-d/agent-skills -s amnesia -a '*' -y
+```
 
-# Install a single skill to one agent only
+**Install a specific skill** to one agent only:
+
+```bash
 npx skills add definite-d/agent-skills -s amnesia -a claude-code
 ```
 
-Run `npx skills add definite-d/agent-skills -l` to list the available skills without installing anything.
+**List available skills** without installing anything:
+
+```bash
+npx skills add definite-d/agent-skills -l
+```
 
 ## Available Skills
 
