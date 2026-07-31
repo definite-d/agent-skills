@@ -34,6 +34,7 @@ npx skills add definite-d/agent-skills -l
 | ---- | ---- |
 | [`amnesia`](./skills/amnesia/) | Make long autonomous work survive context-window wipes by externalizing agent state to disk (PROMPT.md / PLAN.md / HISTORY.md). |
 | [`atomic-commits`](./skills/atomic-commits/) | Create atomic, logically-grouped commits from uncommitted changes using dependency-aware analysis and ordering. |
+| [`changelog`](./skills/changelog/) | Write Keep a Changelog / SemVer compliant changelogs from scratch or from git history and existing records. |
 | [`granular-git`](./skills/granular-git/) | Character-precise, non-destructive Git commits via Git's plumbing layer. |
 | [`state-machine-design`](./skills/state-machine-design/) | Design software systems using the state machine pattern. |
 
