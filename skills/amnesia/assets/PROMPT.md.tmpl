@@ -1,0 +1,31 @@
+# PROMPT.md — self-contained context brief
+
+> **Goal:** <one-line objective. What is being built/verified/decided and why.>
+>
+> On a context reset, read this file first, then `PLAN.md` (task state), then `HISTORY.md`
+> (decisions + pitfalls). Resume from the first un-ticked item in PLAN.md.
+
+## Constraints
+- <writable areas — exact paths. Anything outside is read-only unless stated.>
+- <hard requirements: e.g. version pins, image-size limits, no extra deps>
+- <the "done" definition / acceptance criteria>
+
+## Key facts (verbatim — no paraphrasing)
+- <exact commands, paths, crate versions, file:line references, identifiers>
+- <API surfaces discovered, with source (docs.rs, source file, empirical probe)>
+- <environment: toolchain versions, available tools, what is/isn't installed>
+
+## Decisions (details in HISTORY.md)
+- <D1 — short statement of a locked decision>
+- <D2 — ...>
+
+## Commands
+```
+<workdir> command arg1 "arg with spaces"
+<workdir> command2
+```
+
+## Current state / next actions
+- <what just finished>
+- <the immediate next step>
+- <known blockers>
