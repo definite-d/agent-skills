@@ -36,6 +36,7 @@ npx skills add definite-d/agent-skills -l
 | [`atomic-commits`](./skills/atomic-commits/) | Create atomic, logically-grouped commits from uncommitted changes using dependency-aware analysis and ordering. |
 | [`changelog`](./skills/changelog/) | Write Keep a Changelog / SemVer compliant changelogs from scratch or from git history and existing records. |
 | [`granular-git`](./skills/granular-git/) | Character-precise, non-destructive Git commits via Git's plumbing layer. |
+| [`lean-code`](./skills/lean-code/) | Keep code lean by catching AI slop: over-engineering, defensive-programming overload, chat-oriented comments, and unnecessary tests. |
 | [`state-machine-design`](./skills/state-machine-design/) | Design software systems using the state machine pattern. |
 
 ## Structure
