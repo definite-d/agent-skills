@@ -254,12 +254,37 @@
         width: 0;
         border-right-color: transparent;
       }
+
+      .layout.nav-collapsed aside > * {
+        visibility: hidden;
+        transition: visibility 0s linear 180ms;
+      }
     }
 
     aside>.side-search,
-    aside>.nav-scroll {
+    aside>.nav-scroll,
+    aside>.side-foot {
       width: var(--nav-w);
       flex-shrink: 0;
+    }
+
+    .side-foot {
+      padding: 12px 16px 14px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 11px;
+      color: var(--text-tertiary);
+    }
+
+    .side-foot a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color 120ms ease, border-color 120ms ease;
+    }
+
+    .side-foot a:hover {
+      color: var(--text);
+      border-bottom-color: var(--text-tertiary);
     }
 
     .nav-scroll {
@@ -783,6 +808,9 @@
           <ul class="nav-list" id="prompt-list"></ul>
         </section>
       </div>
+      <footer class="side-foot">
+        Made with <a href="https://github.com/definite-d/agent-skills/tree/main/skills/specular" target="_blank" rel="noopener">specular</a>
+      </footer>
     </aside>
 
     <main class="main" id="main">
