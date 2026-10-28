@@ -38,6 +38,7 @@ npx skills add definite-d/agent-skills -l
 | [`granular-git`](./skills/granular-git/) | Character-precise, non-destructive Git commits via Git's plumbing layer. |
 | [`lean-code`](./skills/lean-code/) | Keep code lean by catching AI slop: over-engineering, defensive-programming overload, chat-oriented comments, and unnecessary tests. |
 | [`orchestra`](./skills/orchestra/) | Coordinate parallel subagents to decompose, diagnose, fix, and report on a task. |
+| [`specular`](./skills/specular/) | Build a zero-build viewer for markdown docs: one self-contained HTML file or a folder with vendored parts. |
 | [`state-machine-design`](./skills/state-machine-design/) | Design software systems using the state machine pattern. |
 
 ## Structure
