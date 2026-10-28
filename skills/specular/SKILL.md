@@ -2,11 +2,11 @@
 name: specular
 description: |-
   Build a zero-build viewer for a folder of markdown: grouped sidebar navigation, filter search,
-  light/dark themes, syntax highlighting, copy buttons, a raw-source toggle, and scroll restore that
-  only applies to reloads. Ships the finished viewer. Use when someone wants to read specs,
-  ADRs, RFCs, prompts, runbooks, or notes in a decent UI, or asks for a "spec browser", "docs
-  viewer", "markdown reader", "documentation portal", or "single file, no build". Skip it for public
-  sites that need SEO, real routing, auth, or multi-user editing.
+  light/dark themes, syntax highlighting, copy buttons, a raw-source toggle, previous and next links,
+  and scroll restore that only applies to reloads. Ships the finished viewer. Use when someone wants
+  to read specs, ADRs, RFCs, prompts, runbooks, or notes in a decent UI, or asks for a "spec
+  browser", "docs viewer", "markdown reader", "documentation portal", or "single file, no build".
+  Skip it for public sites that need SEO, real routing, auth, or multi-user editing.
 
   Examples:
   - user: "make these specs readable" → copy the viewer, fill in the docs arrays, inline the libraries
@@ -35,6 +35,7 @@ Both come from the same file.
 
 1. `<title>` and `<span class="brand">`.
 2. `SPECS` and `PROMPTS`: one `{ num, name, file }` per document, paths relative to the viewer root.
+   The same order drives the sidebar and the previous/next links at the end of each document.
 3. Optional: the color tokens in `:root` and `.light`.
 4. Optional: the sidebar group labels in the markup.
 
@@ -79,4 +80,4 @@ The viewer already handles these. If you rewrite one, keep the reason.
 ## Ship
 
 Open it in a browser: both themes, collapse the sidebar, search, copy a block, toggle the source
-view, reload mid-document. That is the test.
+view, walk previous/next to the last document and back, reload mid-document. That is the test.

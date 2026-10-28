@@ -15,8 +15,9 @@ Skip it for public sites that need SEO, deep routing, auth, or multi-user editin
 ## What It Produces
 
 Grouped sidebar navigation, filter search with `Ctrl/⌘K`, light and dark themes, a collapsible
-sidebar, syntax highlighting with a hand-tuned palette, copy buttons on code blocks, a raw-source
-toggle, and scroll restore that applies to reloads only.
+sidebar, syntax highlighting with a hand-tuned palette, copy buttons on code blocks, previous and
+next links at the end of each document, a raw-source toggle, and scroll restore that applies to
+reloads only.
 
 One file by default, or a folder with `index.html`, `style.css`, `app.js`, and `vendor/`.
 

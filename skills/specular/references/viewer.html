@@ -425,6 +425,58 @@
       font-weight: 500;
     }
 
+    .pager {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .pager[hidden],
+    .pager a[hidden] {
+      display: none;
+    }
+
+    .pager a {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg-elev);
+      text-decoration: none;
+      transition: border-color 120ms ease;
+    }
+
+    .pager a:hover {
+      border-color: var(--text-tertiary);
+    }
+
+    .pager-next {
+      grid-column: 2;
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .pager-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-tertiary);
+    }
+
+    .pager-title {
+      max-width: 100%;
+      overflow: hidden;
+      font-size: 14px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      color: var(--text);
+    }
+
     article {
       display: flex;
       flex-direction: column;
@@ -743,6 +795,16 @@
           <button class="ghost-btn" id="source-toggle" type="button" aria-pressed="false">View source</button>
         </header>
         <article id="content"></article>
+        <nav class="pager" id="pager" aria-label="Document navigation" hidden>
+          <a id="pager-prev" rel="prev" hidden>
+            <span class="pager-label">Previous</span>
+            <span class="pager-title"></span>
+          </a>
+          <a class="pager-next" id="pager-next" rel="next" hidden>
+            <span class="pager-label">Next</span>
+            <span class="pager-title"></span>
+          </a>
+        </nav>
       </div>
     </main>
   </div>
@@ -792,6 +854,9 @@
     const main = document.getElementById("main");
     const searchHint = document.getElementById("search-hint");
     const sourceToggle = document.getElementById("source-toggle");
+    const pager = document.getElementById("pager");
+    const pagerPrev = document.getElementById("pager-prev");
+    const pagerNext = document.getElementById("pager-next");
 
 
 
@@ -873,6 +938,23 @@
       return `<pre><code class="hljs language-markdown">${code}</code></pre>`;
     }
 
+    function setPagerLink(link, doc) {
+      link.hidden = !doc;
+      if (!doc) return;
+      link.href = "#" + doc.file;
+      link.dataset.file = doc.file;
+      link.dataset.kind = doc.file.startsWith("prompts/") ? "prompt" : "spec";
+      link.querySelector(".pager-title").textContent = doc.name;
+    }
+
+    function updatePager() {
+      const all = [...SPECS, ...PROMPTS];
+      const index = all.findIndex(doc => doc.file === currentFile);
+      setPagerLink(pagerPrev, index > 0 ? all[index - 1] : null);
+      setPagerLink(pagerNext, index >= 0 ? all[index + 1] : null);
+      pager.hidden = index < 0;
+    }
+
     function paint(doc, keepScroll) {
       content.innerHTML = sourceView ? sourceHtml(doc.raw) : doc.html;
       content.querySelectorAll("pre").forEach(addCopy);
@@ -880,6 +962,7 @@
       const info = [...SPECS, ...PROMPTS].find(f => f.file === currentFile);
       readerTitle.textContent = info ? info.name : currentFile.split("/").pop().replace(".md", "");
       readerKicker.textContent = currentKind === "prompt" ? "Prompt" : "Specification";
+      updatePager();
 
       sourceToggle.textContent = sourceView ? "View rendered" : "View source";
       sourceToggle.setAttribute("aria-pressed", String(sourceView));
@@ -946,6 +1029,13 @@
       e.preventDefault();
       load(a.dataset.file, a.dataset.kind);
       closeSidebar();
+    });
+
+    pager.addEventListener("click", e => {
+      const a = e.target.closest("a[data-file]");
+      if (!a) return;
+      e.preventDefault();
+      load(a.dataset.file, a.dataset.kind);
     });
 
     search.addEventListener("input", e => {
